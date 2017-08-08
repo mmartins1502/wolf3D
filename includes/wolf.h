@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/05/17 10:48:38 by mmartins          #+#    #+#             */
-/*   Updated: 2017/06/16 17:55:03 by mmartins         ###   ########.fr       */
+/*   Created: 2017/08/07 10:48:38 by mmartins          #+#    #+#             */
+/*   Updated: 2017/08/08 18:37:13 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,19 @@
 # include <math.h>
 # include <OpenCL/opencl.h>
 
-# define WIDTH 1300
-# define HEIGHT 1300
+# define WIDTH 1800
+# define HEIGHT 1000
 # define SIZE_IMG WIDTH * HEIGHT
 # define ABS(x) (x < 0 ? -x : x)
 
+typedef struct			s_poz
+{
+	double		x;
+	double		y;
+}						t_poz;
+
 typedef struct			s_opencl
 {
-	size_t				workGroupSize;
 	cl_platform_id		platform_id;
 	cl_device_id		device_id;
 	cl_context			context;
@@ -45,6 +50,15 @@ typedef struct			s_env
 	void				(*f)(struct s_env *);
 	t_pos				mouse;
 	t_opencl			opencl;
+	t_poz				pos;
+	t_poz				dir;
+	t_poz				pl;
+	t_poz				cam;
+	t_poz				raypos;
+	t_poz				raydir;
+	t_poz				map;
+	t_poz				side;
+	t_poz				delta;
 }						t_env;
 
 int						main(int ac, char **av);
