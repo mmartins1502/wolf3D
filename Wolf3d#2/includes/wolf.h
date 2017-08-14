@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 10:48:38 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/10 17:17:20 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/14 15:02:48 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ typedef struct			s_player
 	t_double			dir;
 	t_double			pl;
 	int					z;
+	double				speed_move;
+	double				speed_turn;
+	int					jump;
+	int					sprint;
 }						t_player;
 
 typedef struct			s_ray
@@ -77,9 +81,9 @@ typedef struct			s_mlxo
 
 typedef struct			s_env
 {
-	t_mlxo				mlx;
 	t_player			play;
 	t_ray				ray;
+	t_mlxo				mlx;
 	int					width;
 	int					height;
 	int					map_width;
@@ -92,13 +96,20 @@ typedef struct			s_env
 	unsigned int		color_sky;
 	unsigned int		color_ground;
 	int					mapnb;
+	char				**texture;
+	t_mlxo				*text;
+	int					weapon;
 }						t_env;
 
 int						main(void);
 int						init_env(t_env *e);
-int						key_hook(int keycode, t_env *e);
+int						key_hook_1(int keycode, t_env *e);
 int						map(t_env *e);
 void					raycasting(t_env *e);
 void					draw_line(t_env *e, int x, int start, int end);
+int						loop_hook(t_env *e);
+void					key_move(int keycode, t_env *e);
+int						key_press(int keycode, t_env *e);
+int						key_hook_2(int keycode, t_env *e);
 
 #endif

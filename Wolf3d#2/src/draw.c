@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 17:15:18 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/10 17:59:42 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/14 16:39:20 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ static int			get_color(t_env *e)
 	return (e->color4);
 }
 
+// static int			get_color_text(t_env *e)
+// {
+// 	int		textnb;
+//
+// 	textnb = e->map[e->ray.map.x][e->ray.map.y] - 1;
+// 		return (e->color)
+// }
+
 void				draw_line(t_env *e, int x, int start, int end)
 {
 	unsigned int	color;
@@ -44,11 +52,13 @@ void				draw_line(t_env *e, int x, int start, int end)
 	i = -1;
 	color = get_color(e);
 	while (++i < start + e->play.z)
-		put_pxl(e, x, i, color);
+		put_pxl(e, x, i, e->color_sky);
 	i--;
 	while (++i <= end + e->play.z && i < e->height)
+	{
 		put_pxl(e, x, i, color);
+	}
 	i--;
 	while (++i < e->height)
-		put_pxl(e, x, i, color);
+		put_pxl(e, x, i, e->color_ground);
 }

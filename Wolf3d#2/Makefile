@@ -6,7 +6,7 @@
 #    By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/17 15:59:39 by mmartins          #+#    #+#              #
-#    Updated: 2017/08/10 17:17:44 by mmartins         ###   ########.fr        #
+#    Updated: 2017/08/14 13:11:18 by mmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRC = 	src/main.c \
 		src/map.c \
 		src/raycasting.c \
 		src/draw.c \
+		src/loop.c \
+		src/key_move.c \
 
 OBJ = $(SRC:.c=.o)
 
