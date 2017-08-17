@@ -6,13 +6,13 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 15:23:08 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/14 14:03:46 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/17 17:50:12 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf.h>
 
-int		read_line(char **line, int y, t_env *e)
+int				read_line(char **line, int y, t_env *e)
 {
 	int		x;
 	char	**line_split;
@@ -59,7 +59,10 @@ static int		read_file(char *filename, t_env *e)
 
 	y = -1;
 	line = NULL;
-	fd = open(filename, O_RDONLY);
+	if (open(filename, O_DIRECTORY) >= 0)
+		return (0);
+	if ((fd = open(filename, O_RDONLY)) < 0)
+		return (0);
 	if (!read_pos(fd, e))
 		return (0);
 	if (!(e->map = (int **)ft_memalloc(sizeof(int *) * e->map_height)))
@@ -70,17 +73,21 @@ static int		read_file(char *filename, t_env *e)
 			return (0);
 		ft_strdel(&line);
 	}
+	close(fd);
 	return (1);
 }
 
 int				map(t_env *e)
 {
 	if (e->mapnb == 1)
-		read_file("./map_1.map", e);
+		read_file("./maps/map_1.map", e);
 	if (e->mapnb == 2)
-		read_file("./map_2.map", e);
+		read_file("./maps/map_2.map", e);
 	if (e->mapnb == 3)
-		read_file("./map_3.map", e);
+		read_file("./maps/map_3.map", e);
+	e->mapon = 1;
+	free(e->text);
+	free(e->texture);
 	mlx_loop_hook(e->mlx.mlx, loop_hook, e);
 	mlx_key_hook(e->mlx.win, key_hook_2, e);
 	return (1);

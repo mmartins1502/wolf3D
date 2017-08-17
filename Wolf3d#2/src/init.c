@@ -6,67 +6,11 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 13:50:51 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/14 15:06:57 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/17 16:25:30 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf.h>
-
-// static void		set_weapon(t_env *e)
-// {
-// 	int		x;
-// 	int		y;
-//
-// 	x = (e->win_x / 4);
-// 	y = e->win_y - 250;
-// 	if (e->weapon == 0)
-// 	mlx_put_image_to_window(e->mlx, e->win, e->text[0].img_ptr, x + 100, y);
-// 	else if (e->weapon == 1)
-// 	{
-// 		if (e->shot == 1)
-// 		{
-// 			mlx_put_image_to_window(e->mlx, e->win, e->text[3].img_ptr,
-// 				x + 410, y);
-// 				e->shot = 0;
-// 			}
-// 			mlx_put_image_to_window(e->mlx, e->win, e->text[1].img_ptr, x + 400, y);
-// 			x = (e->win_x / 2) - 50;
-// 			y = (e->win_y / 2) - 50;
-// 			mlx_put_image_to_window(e->mlx, e->win, e->text[2].img_ptr, x, y);
-// 		}
-// 	}
-// }
-//
-// static int		init_texture(t_env *e)
-// {
-// 	int		i;
-// 	int		w;
-// 	int		h;
-//
-// 	e->text = ft_memalloc(sizeof(t_img) * 11);
-// 	e->texture = ft_memalloc(sizeof(char*) * 11);
-// 	if (e->text == NULL || e->texture == NULL)
-// 		return (-1);
-// 	e->texture[0] = "../pics/textures/xpm/eagle.xpm";
-// 	e->texture[1] = "../pics/textures/xpm/redbrick.xpm";
-// 	e->texture[2] = "../pics/textures/xpm/purplestone.xpm";
-// 	e->texture[3] = "../pics/textures/xpm/greystone.xpm";
-// 	e->texture[4] = "../pics/textures/xpm/bluestone.xpm";
-// 	e->texture[5] = "../pics/textures/xpm/bluestone.xpm";
-// 	e->texture[6] = "../pics/textures/xpm/bluestone.xpm";
-// 	e->texture[7] = "../pics/textures/xpm/bluestone.xpm";
-// 	e->texture[8] = "../pics/textures/xpm/bluestone.xpm";
-// 	e->texture[9] = "../pics/textures/xpm/bluestone.xpm";
-// 	i = -1;
-// 	while (e->texture[++i])
-// 	{
-// 		e->text[i].img_ptr = mlx_xpm_file_to_image(e->mlx, e->texture[i],
-// 				&w, &h);
-// 		e->text[i].data = mlx_get_data_addr(e->text[i].img_ptr,
-// 				&e->text[i].bpp, &e->text[i].sizeline, &e->text[i].endian);
-// 	}
-// 	return (0);
-// }
 
 static void		init_play(t_env *e)
 {
@@ -99,7 +43,6 @@ int				init_env(t_env *e)
 	e->height = HEIGHT;
 	init_play(e);
 	init_mlx(e);
-	// init_texture(e);
 	e->weapon = 0;
 	e->color1 = COLOR1;
 	e->color2 = COLOR2;
@@ -108,5 +51,8 @@ int				init_env(t_env *e)
 	e->color_sky = COLORSK;
 	e->color_ground = COLORGR;
 	e->mapnb = 0;
+	e->enter = 0;
+	e->mapon = 0;
+	e->select = 1;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 17:15:18 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/14 16:39:20 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/16 19:12:33 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,6 @@ static int			get_color(t_env *e)
 		return (e->color3);
 	return (e->color4);
 }
-
-// static int			get_color_text(t_env *e)
-// {
-// 	int		textnb;
-//
-// 	textnb = e->map[e->ray.map.x][e->ray.map.y] - 1;
-// 		return (e->color)
-// }
 
 void				draw_line(t_env *e, int x, int start, int end)
 {

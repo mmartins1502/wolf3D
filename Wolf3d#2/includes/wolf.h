@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 10:48:38 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/14 15:02:48 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/17 17:03:35 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,13 @@ typedef struct			s_env
 	char				**texture;
 	t_mlxo				*text;
 	int					weapon;
+	int					enter;
+	int					mapon;
+	int					select;
 }						t_env;
 
-int						main(void);
+int						main(int ac, char **av);
+int						ft_free(t_env *e);
 int						init_env(t_env *e);
 int						key_hook_1(int keycode, t_env *e);
 int						map(t_env *e);
@@ -111,5 +115,7 @@ int						loop_hook(t_env *e);
 void					key_move(int keycode, t_env *e);
 int						key_press(int keycode, t_env *e);
 int						key_hook_2(int keycode, t_env *e);
+void					set_menu(t_env *e);
+void					homescreen(t_env *e);
 
 #endif

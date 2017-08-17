@@ -6,11 +6,26 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 14:24:11 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/14 16:52:19 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/17 18:01:04 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf.h>
+
+static void		display_weapon(t_env *e)
+{
+	if (e->weapon == 0)
+		mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->text[0].img, e->width
+			/ 2 - 120, e->height / 2 + 80);
+	else if (e->weapon == 1)
+		mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->text[1].img, e->width
+			/ 2, e->height / 2 + 30);
+	else if (e->weapon == 2)
+		mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->text[2].img, e->width
+			/ 4 - 100, e->height / 2 + 95);
+	free(e->text);
+	free(e->texture);
+}
 
 static void		weapon(t_env *e)
 {
@@ -33,15 +48,7 @@ static void		weapon(t_env *e)
 		e->text[i].pxl = mlx_get_data_addr(e->text[i].img,
 				&e->text[i].bpp, &e->text[i].s_line, &e->text[i].ed);
 	}
-	if (e->weapon == 0)
-		mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->text[0].img, e->width
-			/ 2 - 120, e->height / 2 + 80);
-	else if (e->weapon == 1)
-		mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->text[1].img, e->width
-			/ 2, e->height / 2 + 30);
-	else if (e->weapon == 2)
-		mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->text[2].img, e->width
-			/ 4 - 100, e->height / 2 + 95);
+	display_weapon(e);
 }
 
 int				loop_hook(t_env *e)

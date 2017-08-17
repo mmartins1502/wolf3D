@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 13:07:22 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/14 15:17:00 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/17 16:21:09 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	move_left(t_env *e)
 
 static void	move_forward_backward(int keycode, t_env *e)
 {
-	if (keycode == 126)
+	if (keycode == 126 && e->mapon == 1)
 	{
 		if (e->map[(int)(e->play.pos.x + e->play.dir.x *
 				e->play.speed_move)][(int)(e->play.pos.y)] == 0)
@@ -57,7 +57,7 @@ static void	move_forward_backward(int keycode, t_env *e)
 				e->play.dir.y * e->play.speed_move)] == 0)
 			e->play.pos.y += e->play.dir.y * e->play.speed_move;
 	}
-	else if (keycode == 125)
+	else if (keycode == 125 && e->mapon == 1)
 	{
 		if (e->map[(int)(e->play.pos.x - e->play.dir.x *
 				e->play.speed_move)][(int)(e->play.pos.y)] == 0)
@@ -70,7 +70,7 @@ static void	move_forward_backward(int keycode, t_env *e)
 
 static void	move_lateral(int keycode, t_env *e)
 {
-	if (keycode == 2)
+	if (keycode == 2 && e->mapon == 1)
 	{
 		if (e->map[(int)(e->play.pos.x + e->play.dir.y *
 				e->play.speed_move)][(int)(e->play.pos.y)] == 0)
@@ -79,7 +79,7 @@ static void	move_lateral(int keycode, t_env *e)
 				e->play.dir.x * e->play.speed_move)] == 0)
 			e->play.pos.y -= e->play.dir.x * e->play.speed_move;
 	}
-	if (keycode == 0)
+	if (keycode == 0 && e->mapon == 1)
 	{
 		if (e->map[(int)(e->play.pos.x - e->play.dir.y *
 				e->play.speed_move)][(int)(e->play.pos.y)] == 0)
@@ -92,15 +92,12 @@ static void	move_lateral(int keycode, t_env *e)
 
 void		key_move(int keycode, t_env *e)
 {
-	ft_printf("keycode = %d\n", keycode);
 	move_forward_backward(keycode, e);
 	move_lateral(keycode, e);
-	if (keycode == 123)
+	if (keycode == 123 && e->mapon == 1)
 		move_left(e);
-	if (keycode == 124)
+	if (keycode == 124 && e->mapon == 1)
 		move_right(e);
-	if (keycode == 49)
+	if (keycode == 49 && e->mapon == 1)
 		e->play.jump = !e->play.jump;
-	if (keycode == 257)
-		e->play.sprint = !e->play.sprint;
 }
