@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/11 14:24:11 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/17 18:01:04 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 13:33:59 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,15 @@ int				loop_hook(t_env *e)
 	}
 	if (e->play.sprint)
 	{
-		if (e->play.speed_move == 0.5)
-			e->play.speed_move -= 0.4;
+		if (e->play.speed_move == 0.7)
+			e->play.speed_move -= 0.6;
 		else
-			e->play.speed_move += 0.4;
+			e->play.speed_move += 0.6;
 	}
 	if (!(e->play.jump) && e->play.z)
 		e->play.z -= 50;
 	mlx_put_image_to_window(e->mlx.mlx, e->mlx.win, e->mlx.img, 0, 0);
 	weapon(e);
+	draw_minimap(e);
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 13:07:22 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/17 16:21:09 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 15:03:21 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf.h>
 
-static void	move_right(t_env *e)
+void		move_right(t_env *e)
 {
 	double	oldx;
 	double	oldpx;
@@ -29,7 +29,7 @@ static void	move_right(t_env *e)
 		e->play.pl.y * cos(-(e->play.speed_turn));
 }
 
-static void	move_left(t_env *e)
+void		move_left(t_env *e)
 {
 	double	oldx;
 	double	oldpx;
@@ -48,7 +48,7 @@ static void	move_left(t_env *e)
 
 static void	move_forward_backward(int keycode, t_env *e)
 {
-	if (keycode == 126 && e->mapon == 1)
+	if ((keycode == 126 || keycode == 13) && e->mapon == 1)
 	{
 		if (e->map[(int)(e->play.pos.x + e->play.dir.x *
 				e->play.speed_move)][(int)(e->play.pos.y)] == 0)
@@ -57,7 +57,7 @@ static void	move_forward_backward(int keycode, t_env *e)
 				e->play.dir.y * e->play.speed_move)] == 0)
 			e->play.pos.y += e->play.dir.y * e->play.speed_move;
 	}
-	else if (keycode == 125 && e->mapon == 1)
+	else if ((keycode == 125 || keycode == 1) && e->mapon == 1)
 	{
 		if (e->map[(int)(e->play.pos.x - e->play.dir.x *
 				e->play.speed_move)][(int)(e->play.pos.y)] == 0)

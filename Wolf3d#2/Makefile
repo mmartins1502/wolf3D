@@ -6,7 +6,7 @@
 #    By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/17 15:59:39 by mmartins          #+#    #+#              #
-#    Updated: 2017/08/15 17:29:58 by mmartins         ###   ########.fr        #
+#    Updated: 2017/08/23 11:15:54 by mmartins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = 	src/main.c \
 		src/draw.c \
 		src/loop.c \
 		src/key_move.c \
+		src/minimap.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -41,8 +42,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	@make -C $(LIBFT_PATH)
 	@$(CC) $(OBJ) $(LIB) -o $(NAME)
-	@rm -rf $(OBJ)
-	@make -C $(LIBFT_PATH) clean
 	@echo "\n$(OKC)$(NAME): compilation success!$(NOC)"
 
 $(OBJ):

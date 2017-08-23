@@ -6,11 +6,36 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 14:49:56 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/17 17:07:09 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 15:08:01 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf.h>
+
+int			e_mouse_move(int x, int y, t_env *e)
+{
+	static int		oldx = 600;
+
+	if (e->mouse == 1)
+	{
+		if ((x < e->width && x > 0) && (y > 0 && y < e->height))
+		{
+			if (x < 20 || x > e->width - 20)
+			{
+				if (x < 20)
+					move_left(e);
+				else
+					move_right(e);
+			}
+			else if (x > oldx)
+				move_right(e);
+			else
+				move_left(e);
+		}
+	}
+	oldx = x;
+	return (0);
+}
 
 int			key_press(int keycode, t_env *e)
 {
@@ -20,12 +45,16 @@ int			key_press(int keycode, t_env *e)
 
 int			key_hook_2(int keycode, t_env *e)
 {
-	if (keycode == 13)
+	printf("keycode = %d\n", keycode);
+	if (keycode == 46)
+		e->mouse = e->mouse == 0 ? 1 : 0;
+	if (keycode == 6)
 		e->weapon += e->weapon == 3 ? -3 : 1;
 	if (keycode == 257)
 		e->play.sprint = !e->play.sprint;
-	key_move(keycode, e);
-	if (keycode == 53)
+	if (keycode == 34)
+		e->wallcolor = e->wallcolor == 0 ? 1 : 0;
+	if (keycode == 53 && e->enter == 1 && e->mapon == 1)
 	{
 		mlx_destroy_window(e->mlx.mlx, e->mlx.win);
 		exit(0);
@@ -51,7 +80,7 @@ int			key_hook_1(int keycode, t_env *e)
 		e->mapnb = e->select;
 	if (e->mapnb != 0)
 		map(e);
-	if (keycode == 53)
+	if (keycode == 53 && e->mapon == 0)
 	{
 		mlx_destroy_window(e->mlx.mlx, e->mlx.win);
 		ft_free(e);

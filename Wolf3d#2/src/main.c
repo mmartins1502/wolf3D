@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 13:43:24 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/17 18:00:52 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 13:59:00 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void			homescreen(t_env *e)
 	int		w;
 	int		h;
 
+	e->mlx.win = mlx_new_window(e->mlx.mlx, e->width, e->height, "WOLF3D");
 	e->text = ft_memalloc(sizeof(t_mlxo) * 5);
 	e->texture = ft_memalloc(sizeof(char*) * 5);
 	if (e->text == NULL || e->texture == NULL)
@@ -90,10 +91,10 @@ int				main(int ac, char **av)
 		exit(0);
 		return (1);
 	}
-	e->mlx.win = mlx_new_window(e->mlx.mlx, e->width, e->height, "WOLF3D");
 	homescreen(e);
 	mlx_hook(e->mlx.win, 17, 18, close_win, e);
-	mlx_key_hook(e->mlx.win, key_hook_1, e);
 	mlx_hook(e->mlx.win, KEY_PRESS, KEY_PRESS_MASK, key_press, e);
+	mlx_hook(e->mlx.win, 6, (1L << 6), e_mouse_move, e);
+	mlx_key_hook(e->mlx.win, key_hook_1, e);
 	mlx_loop(e->mlx.mlx);
 }

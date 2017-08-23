@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 13:50:51 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/17 16:25:30 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 15:08:29 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,11 @@ int				init_env(t_env *e)
 	init_play(e);
 	init_mlx(e);
 	e->weapon = 0;
-	e->color1 = COLOR1;
-	e->color2 = COLOR2;
-	e->color3 = COLOR3;
-	e->color4 = COLOR4;
-	e->color_sky = COLORSK;
-	e->color_ground = COLORGR;
 	e->mapnb = 0;
 	e->enter = 0;
 	e->mapon = 0;
 	e->select = 1;
+	e->wallcolor = 0;
+	e->mouse = 0;
 	return (1);
 }

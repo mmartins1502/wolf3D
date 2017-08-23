@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 10:48:38 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/17 17:03:35 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 15:08:18 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,19 @@
 # define KEY_PRESS_MASK (1L<<0)
 # define KEY_PRESS 2
 
-# define COLOR1 0xcf0b3e
-# define COLOR2 0x074dee
-# define COLOR3 0xeeec0e
-# define COLOR4 0x09ab14
-# define COLORSK 0x4f98e3
-# define COLORGR 0x4e310b
+# define COLOR1 0xD8E1DF
+# define COLOR2 0xAEB5B4
+# define COLOR3 0xA1A5A4
+# define COLOR4 0x93918E
+# define COLORSK 0x2D241E
+# define COLORGR 0x606060
+
+# define COLOR5 0x00046B
+# define COLOR6 0x00058A
+# define COLOR7 0x040AAB
+# define COLOR8 0x0F15C3
+# define COLORSK1 0x4C4C4F
+# define COLORGR1 0x878787
 
 typedef struct			s_int
 {
@@ -102,6 +109,8 @@ typedef struct			s_env
 	int					enter;
 	int					mapon;
 	int					select;
+	int					wallcolor;
+	int					mouse;
 }						t_env;
 
 int						main(int ac, char **av);
@@ -117,5 +126,9 @@ int						key_press(int keycode, t_env *e);
 int						key_hook_2(int keycode, t_env *e);
 void					set_menu(t_env *e);
 void					homescreen(t_env *e);
+void					draw_minimap(t_env *e);
+void					move_left(t_env *e);
+void					move_right(t_env *e);
+int						e_mouse_move(int x, int y, t_env *e);
 
 #endif
