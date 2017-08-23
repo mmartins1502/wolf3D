@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 14:49:56 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/23 15:08:01 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 16:05:29 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int			key_hook_2(int keycode, t_env *e)
 		e->play.sprint = !e->play.sprint;
 	if (keycode == 34)
 		e->wallcolor = e->wallcolor == 0 ? 1 : 0;
+	if (keycode == 49 && e->mapon == 1)
+		e->space = e->space == 0 ? 1 : 0;
 	if (keycode == 53 && e->enter == 1 && e->mapon == 1)
 	{
 		mlx_destroy_window(e->mlx.mlx, e->mlx.win);

@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/07 10:48:38 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/23 15:08:18 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 17:04:05 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define COLOR4 0x93918E
 # define COLORSK 0x2D241E
 # define COLORGR 0x606060
+# define COLORDOOR 0x000000
 
 # define COLOR5 0x00046B
 # define COLOR6 0x00058A
@@ -36,6 +37,7 @@
 # define COLOR8 0x0F15C3
 # define COLORSK1 0x4C4C4F
 # define COLORGR1 0x878787
+# define COLORDOOR1 0x20D4C2
 
 typedef struct			s_int
 {
@@ -111,6 +113,8 @@ typedef struct			s_env
 	int					select;
 	int					wallcolor;
 	int					mouse;
+	int					space;
+	unsigned int		color_door;
 }						t_env;
 
 int						main(int ac, char **av);

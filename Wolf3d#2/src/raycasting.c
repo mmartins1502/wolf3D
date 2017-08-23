@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 17:09:44 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/14 13:13:41 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 16:05:31 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ static void		ray_cal_dist(t_env *e)
 		}
 		if (e->map[e->ray.map.x][e->ray.map.y] > 0)
 		{
-			e->ray.hit = 1;
+			if (e->map[e->ray.map.x][e->ray.map.y] == 9 && e->space == 1)
+				e->ray.hit = 0;
+			else
+				e->ray.hit = 1;
 			if (e->ray.hit_side == 0)
 				e->ray.dist = (e->ray.map.x - e->ray.pos.x +
 					(1 - e->ray.step.x) / 2) / e->ray.dir.x;

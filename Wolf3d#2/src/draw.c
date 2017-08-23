@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 17:15:18 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/23 11:51:01 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/23 17:02:16 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void			get_color_bis(t_env *e)
 		e->color4 = COLOR4;
 		e->color_sky = COLORSK;
 		e->color_ground = COLORGR;
+		e->color_door = COLORDOOR;
 	}
 	else
 	{
@@ -41,22 +42,28 @@ static void			get_color_bis(t_env *e)
 		e->color4 = COLOR8;
 		e->color_sky = COLORSK1;
 		e->color_ground = COLORGR1;
+		e->color_door = COLORDOOR1;
 	}
 }
 
 static int			get_color(t_env *e)
 {
 	get_color_bis(e);
-	if (e->ray.hit_side == 1)
+	if (e->map[e->ray.map.x][e->ray.map.y] == 9)
+		return (e->color_door);
+	else
 	{
-		if (e->ray.step.y == -1)
-			return (e->color1);
-		if (e->ray.step.y == 1)
-			return (e->color2);
+		if (e->ray.hit_side == 1)
+		{
+			if (e->ray.step.y == -1)
+				return (e->color1);
+			if (e->ray.step.y == 1)
+				return (e->color2);
+		}
+		if (e->ray.step.x == -1)
+			return (e->color3);
+		return (e->color4);
 	}
-	if (e->ray.step.x == -1)
-		return (e->color3);
-	return (e->color4);
 }
 
 void				draw_line(t_env *e, int x, int start, int end)
