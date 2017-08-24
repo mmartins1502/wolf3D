@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 15:41:19 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/10 16:48:41 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/24 11:20:34 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#include <get_next_line.h>
-#include <ft_printf.h>
+# include <get_next_line.h>
+# include <ft_printf.h>
 # include <string.h>
 
 typedef struct		s_list

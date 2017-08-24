@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/14 13:07:22 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/23 16:41:54 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/24 13:23:23 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,8 @@ static void	move_forward_backward(int keycode, t_env *e)
 				e->space == 1))
 			e->play.pos.y += e->play.dir.y * e->play.speed_move;
 	}
-	else if ((keycode == 125 || keycode == 1) && e->mapon == 1)
-	{
-		if (e->map[(int)(e->play.pos.x - e->play.dir.x *
-				e->play.speed_move)][(int)(e->play.pos.y)] == 0 ||
-				(e->map[(int)(e->play.pos.x + e->play.dir.x *
-				e->play.speed_move)][(int)(e->play.pos.y)] == 9 &&
-				e->space == 1))
-			e->play.pos.x -= e->play.dir.x * e->play.speed_move;
-		if (e->map[(int)(e->play.pos.x)][(int)(e->play.pos.y -
-				e->play.dir.y * e->play.speed_move)] == 0 || (
-				e->map[(int)(e->play.pos.x)][(int)(e->play.pos.y +
-				e->play.dir.y * e->play.speed_move)] == 9 &&
-				e->space == 1))
-			e->play.pos.y -= e->play.dir.y * e->play.speed_move;
-	}
+	else
+		move_backward(keycode, e);
 }
 
 static void	move_lateral(int keycode, t_env *e)

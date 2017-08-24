@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 22:41:02 by mmartins          #+#    #+#             */
-/*   Updated: 2017/06/01 22:57:53 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/24 11:18:49 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ char	*ft_stradd(char *s1, char const *s2)
 		return (NULL);
 	ft_strcpy(res, s1);
 	ft_strcat(res, s2);
-    ft_strdel(&s1);
+	ft_strdel(&s1);
 	return (res);
 }

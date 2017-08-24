@@ -6,7 +6,7 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 13:50:51 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/23 17:01:59 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/24 13:12:44 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int				init_env(t_env *e)
 	e->enter = 0;
 	e->mapon = 0;
 	e->select = 1;
-	e->wallcolor = 0;
-	e->mouse = 0;
+	e->wallcolor = 1;
+	e->mouse = 1;
 	e->space = 0;
 	return (1);
 }

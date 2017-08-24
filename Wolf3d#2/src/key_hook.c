@@ -6,11 +6,30 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/10 14:49:56 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/23 16:05:29 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/24 13:22:32 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf.h>
+
+void		move_backward(int keycode, t_env *e)
+{
+	if ((keycode == 125 || keycode == 1) && e->mapon == 1)
+	{
+		if (e->map[(int)(e->play.pos.x - e->play.dir.x *
+				e->play.speed_move)][(int)(e->play.pos.y)] == 0 ||
+				(e->map[(int)(e->play.pos.x + e->play.dir.x *
+				e->play.speed_move)][(int)(e->play.pos.y)] == 9 &&
+				e->space == 1))
+			e->play.pos.x -= e->play.dir.x * e->play.speed_move;
+		if (e->map[(int)(e->play.pos.x)][(int)(e->play.pos.y -
+				e->play.dir.y * e->play.speed_move)] == 0 || (
+				e->map[(int)(e->play.pos.x)][(int)(e->play.pos.y -
+				e->play.dir.y * e->play.speed_move)] == 9 &&
+				e->space == 1))
+			e->play.pos.y -= e->play.dir.y * e->play.speed_move;
+	}
+}
 
 int			e_mouse_move(int x, int y, t_env *e)
 {
@@ -45,7 +64,6 @@ int			key_press(int keycode, t_env *e)
 
 int			key_hook_2(int keycode, t_env *e)
 {
-	printf("keycode = %d\n", keycode);
 	if (keycode == 46)
 		e->mouse = e->mouse == 0 ? 1 : 0;
 	if (keycode == 6)

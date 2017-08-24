@@ -6,11 +6,37 @@
 /*   By: mmartins <mmartins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 10:52:53 by mmartins          #+#    #+#             */
-/*   Updated: 2017/08/23 11:33:15 by mmartins         ###   ########.fr       */
+/*   Updated: 2017/08/24 11:30:45 by mmartins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <wolf.h>
+
+void			ray_cal_dist_bis(t_env *e)
+{
+	if (e->map[e->ray.map.x][e->ray.map.y] > 0)
+	{
+		if (e->map[e->ray.map.x][e->ray.map.y] == 9 && e->space == 1)
+			e->ray.hit = 0;
+		else
+			e->ray.hit = 1;
+		if (e->ray.hit_side == 0)
+			e->ray.dist = (e->ray.map.x - e->ray.pos.x +
+				(1 - e->ray.step.x) / 2) / e->ray.dir.x;
+		else
+			e->ray.dist = (e->ray.map.y - e->ray.pos.y +
+				(1 - e->ray.step.y) / 2) / e->ray.dir.y;
+	}
+}
+
+int				error_map(t_env *e)
+{
+	mlx_destroy_window(e->mlx.mlx, e->mlx.win);
+	ft_putstr_fd("Error map.\n", 2);
+	ft_free(e);
+	exit(0);
+	return (0);
+}
 
 static void		draw_tile(t_env *e, int y, int x, unsigned int color)
 {
